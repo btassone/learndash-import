@@ -1,5 +1,708 @@
 [
   {
+    "course_id": "373f9cdd-5ec7-4724-adef-06dc191be607",
+    "course_title": "Love on the Rocks 2.0 Toolkit",
+    "quizzes": [
+      {
+        "prereq_quiz_id": null,
+        "questions": [],
+        "quiz_id": "457a978d-d4c5-4a2a-b86e-2bce250428a2",
+        "quiz_title": ""
+      },
+      {
+        "prereq_quiz_id": "457a978d-d4c5-4a2a-b86e-2bce250428a2",
+        "questions": [
+          {
+            "possible_answers": [
+              {
+                "answer_id": "e131048a-94bc-4e92-8305-b24b563e1359",
+                "answer_text": "a) Joy",
+                "correct": false
+              },
+              {
+                "answer_id": "2d778e20-7d13-4047-ab1c-fd02a8155378",
+                "answer_text": "c) Love",
+                "correct": false
+              },
+              {
+                "answer_id": "b59ce70c-e0bf-418f-8f85-c77fba57f859",
+                "answer_text": "b) Understanding",
+                "correct": false
+              },
+              {
+                "answer_id": "5aa165b6-05e7-4177-89bf-86fbe9f0b717",
+                "answer_text": "d) Grace",
+                "correct": true
+              }
+            ],
+            "question_id": "4315a480-f2f8-4084-9688-dd25e98daab2",
+            "question_text": "______ becomes a gift that the spouse can give to their partner, in spite of any situation."
+          },
+          {
+            "possible_answers": [
+              {
+                "answer_id": "d8e987b1-7d75-4127-ae49-9b31adf4ca76",
+                "answer_text": "a) Talking",
+                "correct": false
+              },
+              {
+                "answer_id": "36d29912-1cf1-47ba-9935-a5d4ca3b32ff",
+                "answer_text": "c) Forgiveness",
+                "correct": false
+              },
+              {
+                "answer_id": "2bf0f2ba-1098-422e-9900-69e42d2ee8b6",
+                "answer_text": "b) Rebuilding",
+                "correct": true
+              },
+              {
+                "answer_id": "a7062b4f-8472-4406-aea7-63bcec496f61",
+                "answer_text": "d) Disassociation",
+                "correct": false
+              }
+            ],
+            "question_id": "b241729b-3b3f-4739-8234-bb6451556261",
+            "question_text": "_______ is better than discarding."
+          },
+          {
+            "possible_answers": [
+              {
+                "answer_id": "62b63f9e-1f41-4c8e-967c-fab3f0c434bc",
+                "answer_text": "a) “I understand why my spouse is hurting me.”",
+                "correct": false
+              },
+              {
+                "answer_id": "53ed8baf-bac9-446a-b673-aace09d7f91d",
+                "answer_text": "c) “I hate my spouse.”",
+                "correct": false
+              },
+              {
+                "answer_id": "d24d20c9-2909-4f72-b813-355146382171",
+                "answer_text": "b) “I should listen to my spouse more.”",
+                "correct": false
+              },
+              {
+                "answer_id": "2eec3b60-f598-4a79-8a74-b070f3bd42f2",
+                "answer_text": "d) “Win at all costs.”",
+                "correct": true
+              }
+            ],
+            "question_id": "d2ae619f-af3a-4ab4-99dc-c22f6ecff6f1",
+            "question_text": "Each spouse has the mindset of _____________ when they feel as if they are losing the argument."
+          },
+          {
+            "possible_answers": [
+              {
+                "answer_id": "8da348d4-06f0-453e-b881-1f1f24afcde6",
+                "answer_text": "a) TRUE",
+                "correct": true
+              },
+              {
+                "answer_id": "0b10d858-5527-4143-af80-15d217deb9d2",
+                "answer_text": "b) FALSE",
+                "correct": false
+              }
+            ],
+            "question_id": "6f2ab8b9-c20b-4ce3-a0a4-58d5ea1b3c60",
+            "question_text": "There are two conflicts that occur in counseling a marriage, the first is the current problem and the second is the history of all their martial conflicts and how they saw people resolve conflicts in their childhood."
+          },
+          {
+            "possible_answers": [
+              {
+                "answer_id": "6947040b-0935-4887-9959-7478b14d7fc0",
+                "answer_text": "a) TRUE",
+                "correct": false
+              },
+              {
+                "answer_id": "7ece9fba-7d2c-4bc0-bba9-105f7024be77",
+                "answer_text": "b) FALSE",
+                "correct": true
+              }
+            ],
+            "question_id": "58bfd073-de72-4934-9315-b1878b8f0f97",
+            "question_text": "It is important for the counselor to remain passive and allow the couple to direct the conversation where it needs to go."
+          },
+          {
+            "possible_answers": [
+              {
+                "answer_id": "e4dd8b24-70f4-4fe1-b00a-8313214386ad",
+                "answer_text": "a) “Are we staying on topic?”",
+                "correct": false
+              },
+              {
+                "answer_id": "71ba07d7-1133-4277-982f-2a6966d1b6eb",
+                "answer_text": "c) Both A & B",
+                "correct": false
+              },
+              {
+                "answer_id": "b6dc37da-2f1c-4fe4-8b26-230a5eadd16f",
+                "answer_text": "b) “Which side should I be on?”",
+                "correct": false
+              },
+              {
+                "answer_id": "6d751287-f371-485f-9be0-c37ded13b928",
+                "answer_text": "d) Neither A nor B",
+                "correct": true
+              }
+            ],
+            "question_id": "15b702ad-a6ad-4b66-b29d-aeb951cd6d91",
+            "question_text": "It is important for the counselor to be thinking during the marriage session…"
+          },
+          {
+            "possible_answers": [
+              {
+                "answer_id": "ad73d8ae-1640-4302-987a-f9575fb2e6e9",
+                "answer_text": "a) TRUE",
+                "correct": true
+              },
+              {
+                "answer_id": "663eb7bc-eb66-4af5-b9a6-a679f5d86f2c",
+                "answer_text": "b) FALSE",
+                "correct": false
+              }
+            ],
+            "question_id": "5b76cc71-417f-481e-bc2f-4d55dcca3904",
+            "question_text": "When a spouse sees their partner being defensive, they view their partner’s response as offensive and as a personal attack."
+          },
+          {
+            "possible_answers": [
+              {
+                "answer_id": "98b3bdfd-dac0-4c63-a0f8-84fec6981a71",
+                "answer_text": "a) Never progress in",
+                "correct": false
+              },
+              {
+                "answer_id": "47791a6d-fda1-48b3-a32c-824b987d9bad",
+                "answer_text": "c) Learn over time",
+                "correct": true
+              },
+              {
+                "answer_id": "df152c8a-d468-4907-842a-4c519a421a19",
+                "answer_text": "b) Should avoid at all costs",
+                "correct": false
+              },
+              {
+                "answer_id": "7b5a651e-3a60-43f7-8ccd-48b2b99aa7b5",
+                "answer_text": "d) Are only allowed to express when we are in a martial argument",
+                "correct": false
+              }
+            ],
+            "question_id": "164ab230-2944-4422-8c4f-af8a1eef7f9c",
+            "question_text": "Defenses are something that we…"
+          },
+          {
+            "possible_answers": [
+              {
+                "answer_id": "d9771494-e1d0-4e85-addb-dc9830804231",
+                "answer_text": "a) TRUE",
+                "correct": false
+              },
+              {
+                "answer_id": "f8f81aab-9a85-4b9a-ba46-3b26d92f758b",
+                "answer_text": "b) FALSE",
+                "correct": true
+              }
+            ],
+            "question_id": "9da7ded2-1e2c-4f1c-a04d-ccc1ae5b37d3",
+            "question_text": "The spouse never means to inflict pain on their partner and once they found out what the conflict cycle is, they never hurt their spouse again."
+          },
+          {
+            "possible_answers": [
+              {
+                "answer_id": "975ef204-f887-43db-ab04-5850a767e4de",
+                "answer_text": "a) Injury-Love-Understanding",
+                "correct": false
+              },
+              {
+                "answer_id": "f87a9c75-a91d-46c9-a01d-85ed7f2dc3cc",
+                "answer_text": "c) Pain-Defense-Injury",
+                "correct": true
+              },
+              {
+                "answer_id": "fe965c2d-fdb6-4e0b-917c-e76afcbf678e",
+                "answer_text": "b) Pain-Thought-Joy",
+                "correct": false
+              },
+              {
+                "answer_id": "3901eda9-6ea9-4ad8-9aa3-0c1eadff925c",
+                "answer_text": "d) Defense-Injury-Thought",
+                "correct": false
+              }
+            ],
+            "question_id": "acd0a893-9292-4dc1-8ae7-d22f452381c1",
+            "question_text": "The conflict cycle consists of…"
+          }
+        ],
+        "quiz_id": "68eee5e6-3b96-4788-9fb8-eb934166ddbb",
+        "quiz_title": "Counseling Couples in Conflict: The Role of Relational Grace in Pastoral Counseling"
+      },
+      {
+        "prereq_quiz_id": "68eee5e6-3b96-4788-9fb8-eb934166ddbb",
+        "questions": [
+          {
+            "possible_answers": [
+              {
+                "answer_id": "96823302-8b9e-42e3-b7b1-e9f4b814cc67",
+                "answer_text": "a) Compassion",
+                "correct": false
+              },
+              {
+                "answer_id": "ccd15d10-ad50-48b7-890b-bbf9f66384cb",
+                "answer_text": "c) Caring",
+                "correct": false
+              },
+              {
+                "answer_id": "6fb76b64-feea-45fd-ae80-052288b77de7",
+                "answer_text": "b) Commemoration",
+                "correct": false
+              },
+              {
+                "answer_id": "d8489dfc-703e-4d8a-93b2-054663cd7d54",
+                "answer_text": "d) Community",
+                "correct": true
+              }
+            ],
+            "question_id": "743ec467-9554-4e5e-8cdf-60183249505a",
+            "question_text": "Which of the following is one of the five C’s for change"
+          },
+          {
+            "possible_answers": [
+              {
+                "answer_id": "f37708ba-5a29-486f-b27f-7698114b85e1",
+                "answer_text": "a) Emotional dependency",
+                "correct": false
+              },
+              {
+                "answer_id": "860bfd59-1e97-49ea-a515-4b014a29c763",
+                "answer_text": "c) Both A and B",
+                "correct": true
+              },
+              {
+                "answer_id": "ba59c3ff-1f28-41ac-8a2c-84558a766514",
+                "answer_text": "b) Chronic indifference",
+                "correct": false
+              },
+              {
+                "answer_id": "0a5f41f9-db58-4c36-b006-4a73a786599b",
+                "answer_text": "d) Neither A nor B",
+                "correct": false
+              }
+            ],
+            "question_id": "cc5599ad-a8f4-49de-bb95-23a7823781f2",
+            "question_text": "Which of the following is a destructive behavior?"
+          },
+          {
+            "possible_answers": [
+              {
+                "answer_id": "10207df8-a752-4103-9c7c-787922f33630",
+                "answer_text": "a) Indifference",
+                "correct": false
+              },
+              {
+                "answer_id": "5918e8de-a33c-429b-97ef-99d1030429b7",
+                "answer_text": "c) Boredom",
+                "correct": false
+              },
+              {
+                "answer_id": "8ab30521-f0c9-4f0a-8ae5-7b81090cf421",
+                "answer_text": "b) Reactivity",
+                "correct": false
+              },
+              {
+                "answer_id": "4454634e-1b43-49de-8ac4-e2be4bd433c8",
+                "answer_text": "d) Reciprocity",
+                "correct": true
+              }
+            ],
+            "question_id": "77167e31-b8a0-45b0-8666-bb64e107ef0f",
+            "question_text": "Which of the following is characteristic of a healthy relationship?"
+          },
+          {
+            "possible_answers": [
+              {
+                "answer_id": "bb15abd2-e539-436d-8328-bd492b473480",
+                "answer_text": "a) TRUE",
+                "correct": false
+              },
+              {
+                "answer_id": "cdbc2deb-f5df-448a-b587-5e40f89488a1",
+                "answer_text": "b) FALSE",
+                "correct": true
+              }
+            ],
+            "question_id": "6d130a6a-5f1d-48d4-a7e5-9c0edff86150",
+            "question_text": "Emotional dependency is not destructive in a relationship."
+          },
+          {
+            "possible_answers": [
+              {
+                "answer_id": "6340433c-9df9-4605-8877-fbef1d118cf8",
+                "answer_text": "a) TRUE",
+                "correct": true
+              },
+              {
+                "answer_id": "62bed5c0-1538-43f1-a6ca-481eff6cda33",
+                "answer_text": "b) FALSE",
+                "correct": false
+              }
+            ],
+            "question_id": "a2a8f84a-8238-4f2e-ace3-fc67dec71d35",
+            "question_text": "In a marriage, there should be freedom to respectfully challenge and disagree with one another."
+          },
+          {
+            "possible_answers": [
+              {
+                "answer_id": "cbce9c8a-20f0-42e4-9377-71363ed3f7dc",
+                "answer_text": "a) Reciprocity",
+                "correct": false
+              },
+              {
+                "answer_id": "52d6f27b-3014-48cf-9583-665ac7869a69",
+                "answer_text": "c) Freedom",
+                "correct": false
+              },
+              {
+                "answer_id": "658c2086-d817-495a-94e0-790dee1361bd",
+                "answer_text": "b) Mutuality",
+                "correct": true
+              },
+              {
+                "answer_id": "9cfc802c-8fbf-4dbc-bde6-42666ad6b798",
+                "answer_text": "d) None of the above",
+                "correct": false
+              }
+            ],
+            "question_id": "9c443037-975a-4bf5-8e22-4d8305b39031",
+            "question_text": "_______ includes being caring, honest, respectful, responsible, and repentant."
+          },
+          {
+            "possible_answers": [
+              {
+                "answer_id": "73ce4ae2-4ba7-427e-9c0a-2a360bc1772b",
+                "answer_text": "a) Safety",
+                "correct": true
+              },
+              {
+                "answer_id": "c101f165-5c04-46c5-a642-293d62e6fa50",
+                "answer_text": "c) Stability",
+                "correct": false
+              },
+              {
+                "answer_id": "7e1f7104-d532-41b9-8624-4f572166c8d4",
+                "answer_text": "b) Sanity",
+                "correct": false
+              },
+              {
+                "answer_id": "36e65b2f-8359-401f-8846-1ce91a608c9c",
+                "answer_text": "d) Security",
+                "correct": false
+              }
+            ],
+            "question_id": "18dbe5af-6d09-43c0-9a4b-08c39c3661ec",
+            "question_text": "What is the first stage in stopping destructive behavior?"
+          },
+          {
+            "possible_answers": [
+              {
+                "answer_id": "c6e8995f-8250-48e5-964a-308803708de9",
+                "answer_text": "a) Have you ever been fearful around your partner?",
+                "correct": false
+              },
+              {
+                "answer_id": "0ef2f9b4-dedf-4f68-a965-c5fc5b4ebd85",
+                "answer_text": "c) Are there times when you don’t trust your partner’s honestly?",
+                "correct": false
+              },
+              {
+                "answer_id": "6732b263-ea33-4450-90a2-1141e56cab6e",
+                "answer_text": "b) Do you have the freedom to be yourself?",
+                "correct": false
+              },
+              {
+                "answer_id": "9dc52c96-0758-4c23-b390-d370e4a06085",
+                "answer_text": "d) All of the above",
+                "correct": true
+              }
+            ],
+            "question_id": "ff326910-e9b9-4cd3-bb78-81e8e9b84ef9",
+            "question_text": "Which of the following is a question counselors must ask?"
+          },
+          {
+            "possible_answers": [
+              {
+                "answer_id": "a05a88f3-d5c5-472b-b268-e596af4a2db2",
+                "answer_text": "a) TRUE",
+                "correct": true
+              },
+              {
+                "answer_id": "0bccfc2b-fa85-4fe5-b3f0-54d25e6721ca",
+                "answer_text": "b) FALSE",
+                "correct": false
+              }
+            ],
+            "question_id": "92ffa6c9-0000-4ab7-a963-d0a63476806f",
+            "question_text": "In stage two it is important for the counselor to help the woman understand her proper role."
+          },
+          {
+            "possible_answers": [
+              {
+                "answer_id": "e49faebf-1316-4e73-b3f4-df01fdf03834",
+                "answer_text": "a) TRUE",
+                "correct": true
+              },
+              {
+                "answer_id": "910b3bf2-5174-4e00-9dea-55e236379d8f",
+                "answer_text": "b) FALSE",
+                "correct": false
+              }
+            ],
+            "question_id": "a0fc2986-7d4b-4bcd-b753-507ebfff55c6",
+            "question_text": "Counselors should look for imbalances of power and control in potentially destructive relationships"
+          }
+        ],
+        "quiz_id": "e3f30f79-7e96-48c4-97e9-dee63a62c46f",
+        "quiz_title": "Counseling Strategies that Work for the Emotionally Destructive Marriage, Part 1"
+      },
+      {
+        "prereq_quiz_id": "e3f30f79-7e96-48c4-97e9-dee63a62c46f",
+        "questions": [
+          {
+            "possible_answers": [
+              {
+                "answer_id": "fa2aa4a7-7427-40c4-873f-619488cb8b70",
+                "answer_text": "a) Developing a wrong treatment plan",
+                "correct": false
+              },
+              {
+                "answer_id": "a3e09a97-b836-4d0e-8c80-1cadf1365093",
+                "answer_text": "c) Encouraging the woman to try harder",
+                "correct": false
+              },
+              {
+                "answer_id": "966c413c-5324-4b61-aa24-0b8f74c2bae0",
+                "answer_text": "b) Becoming a benevolent rescuer",
+                "correct": false
+              },
+              {
+                "answer_id": "96bc85cd-8d3c-4374-bdad-67e3994858f4",
+                "answer_text": "d) All of the above",
+                "correct": true
+              }
+            ],
+            "question_id": "728e121a-7ca9-4fb1-8baa-e17b9e9b286c",
+            "question_text": "Which of the following is a common mistake people helpers make in working with marital abuse?"
+          },
+          {
+            "possible_answers": [
+              {
+                "answer_id": "3bcdb563-1db3-4d6a-a889-3b46af39ff86",
+                "answer_text": "a) Clarity",
+                "correct": false
+              },
+              {
+                "answer_id": "b34dd382-7209-4c9a-9e8f-4ddf9f999482",
+                "answer_text": "c) Consequences",
+                "correct": false
+              },
+              {
+                "answer_id": "17278fd1-793c-4284-887d-1ed1e47a8fd9",
+                "answer_text": "b) Confession",
+                "correct": true
+              },
+              {
+                "answer_id": "4f754f73-7d44-4ad1-b7e0-4dcad152cd6b",
+                "answer_text": "d) Commitment",
+                "correct": false
+              }
+            ],
+            "question_id": "e584c676-8762-40b4-a12d-c81604d66979",
+            "question_text": "__________ involves the man being able to articulate the wrongs he has done in his marriage"
+          },
+          {
+            "possible_answers": [
+              {
+                "answer_id": "a18905e7-ec3c-4337-8161-436eccf92866",
+                "answer_text": "a) TRUE",
+                "correct": false
+              },
+              {
+                "answer_id": "42992c55-0b1f-4b35-ab5a-f66a03e93565",
+                "answer_text": "b) FALSE",
+                "correct": true
+              }
+            ],
+            "question_id": "1e6fd47d-974f-4a45-b0b0-254d75243d82",
+            "question_text": "Trying harder to be the “good wife” works in these relationships."
+          },
+          {
+            "possible_answers": [
+              {
+                "answer_id": "02ebd03e-6143-4f06-b810-db7c64745b5d",
+                "answer_text": "a) Heart",
+                "correct": true
+              },
+              {
+                "answer_id": "5a8f5316-1a6b-48dd-85bc-2d29770fa966",
+                "answer_text": "c) Personality",
+                "correct": false
+              },
+              {
+                "answer_id": "c5428c2e-eb68-40fb-8cb7-d3d43a691008",
+                "answer_text": "b) Habits",
+                "correct": false
+              },
+              {
+                "answer_id": "0b01dd63-929a-4c2e-9ade-210e919b6fe5",
+                "answer_text": "d) Character",
+                "correct": false
+              }
+            ],
+            "question_id": "17f615eb-159e-4b27-aa9a-9db59202a473",
+            "question_text": "In stages one and two the counselor is looking for a change of ______."
+          },
+          {
+            "possible_answers": [
+              {
+                "answer_id": "57c852fa-8a2d-4b75-8492-19b8e8de29cf",
+                "answer_text": "a) TRUE",
+                "correct": true
+              },
+              {
+                "answer_id": "fce6c42c-b71d-4acd-b413-456e1063e24a",
+                "answer_text": "b) FALSE",
+                "correct": false
+              }
+            ],
+            "question_id": "1e82f879-209a-449d-937b-e67cdb50fb7f",
+            "question_text": "Practice + Patience = Healing. This statement is:"
+          },
+          {
+            "possible_answers": [
+              {
+                "answer_id": "b585790b-551e-4f3c-ac75-33a7a218aa37",
+                "answer_text": "a) I will be compassionate because I know my spouse is having a tough time.",
+                "correct": false
+              },
+              {
+                "answer_id": "6df7005c-a9bb-4d39-ba16-763115544e3c",
+                "answer_text": "c) I will consider all of the options for working through our problems.",
+                "correct": false
+              },
+              {
+                "answer_id": "ab81252e-5194-4834-bf2d-956908ac3154",
+                "answer_text": "b) I will be caring and will avoid blaming my spouse.",
+                "correct": false
+              },
+              {
+                "answer_id": "122ca50f-19cb-4b48-bee8-dbb88497c1fc",
+                "answer_text": "d) I will be committed to truth, both internally and externally",
+                "correct": true
+              }
+            ],
+            "question_id": "ef6804d6-1c5d-490c-b046-b4e24ea1c33d",
+            "question_text": "What does the C in CORE strengths stand for?"
+          },
+          {
+            "possible_answers": [
+              {
+                "answer_id": "c9169f35-8481-49b6-8ed3-2f3665b2d291",
+                "answer_text": "a) He needs to learn to submit to others.",
+                "correct": false
+              },
+              {
+                "answer_id": "b5c7d518-7566-4078-96db-287e6799095c",
+                "answer_text": "c) He needs to trust God to meet his needs.",
+                "correct": true
+              },
+              {
+                "answer_id": "645e5ab5-73fd-4ba4-8102-747680e2dc18",
+                "answer_text": "b) He needs new problem solving skills.",
+                "correct": false
+              },
+              {
+                "answer_id": "a73e47dc-c6bc-45f8-ae2d-f638616f2b33",
+                "answer_text": "d) All of the above.",
+                "correct": false
+              }
+            ],
+            "question_id": "42009500-270c-46a8-91cc-58b6ea68657a",
+            "question_text": "Which of the following is a necessary change for a destructive person?"
+          },
+          {
+            "possible_answers": [
+              {
+                "answer_id": "2709108d-b629-4e52-afe2-9ae589abe314",
+                "answer_text": "a) When both spouses decide that divorce is the only option.",
+                "correct": false
+              },
+              {
+                "answer_id": "3c07e628-caaa-4709-aa1c-a2e88cd62397",
+                "answer_text": "c) When both partners realize that it is not acceptable for her to liv this way and it’s not acceptable for him to treat her this way.",
+                "correct": true
+              },
+              {
+                "answer_id": "7caada59-3c55-4409-99fb-2266e22af082",
+                "answer_text": "b) When the man decides he will no longer be abusive.",
+                "correct": false
+              },
+              {
+                "answer_id": "a235c9c5-c8bb-4306-b001-6d2aa8faaf1a",
+                "answer_text": "d) None of the above",
+                "correct": false
+              }
+            ],
+            "question_id": "de35f9c3-8e58-439d-9c78-af1c75c3970a",
+            "question_text": "When is sanity reached?"
+          },
+          {
+            "possible_answers": [
+              {
+                "answer_id": "73400c24-f40b-430a-9953-0af3bb6d5ced",
+                "answer_text": "a) TRUE",
+                "correct": true
+              },
+              {
+                "answer_id": "d0e719d9-5042-4f35-9ce8-545a6ff7e3e7",
+                "answer_text": "b) FALSE",
+                "correct": false
+              }
+            ],
+            "question_id": "8e5a32c8-3533-474d-8b4c-eedbe0e7bda3",
+            "question_text": "Being consistently accountable is one of the “Fruits of Repentance.”"
+          },
+          {
+            "possible_answers": [
+              {
+                "answer_id": "64c6c6ca-4865-4fbe-8dc8-7e1eb535e5bb",
+                "answer_text": "a) To develop internal controls",
+                "correct": false
+              },
+              {
+                "answer_id": "121ac408-41a6-4d92-aa85-72b357b8d8b2",
+                "answer_text": "c) To deepen intimacy as trust is established",
+                "correct": true
+              },
+              {
+                "answer_id": "60162da5-2a53-4fca-834e-205c4a5e42a2",
+                "answer_text": "b) To help the couple stop the abusive behaviors",
+                "correct": false
+              },
+              {
+                "answer_id": "84fe4383-01f4-48b6-b342-bf6b98f7c819",
+                "answer_text": "d) To determine the deal breakers",
+                "correct": false
+              }
+            ],
+            "question_id": "e2f835ef-e79d-41ca-b420-8bb84190da59",
+            "question_text": "What is the goal of Stage 4 (Security)?"
+          }
+        ],
+        "quiz_id": "413abf91-cb68-456b-98aa-d0b44368f4ab",
+        "quiz_title": "Counseling Strategies that Work for the Emotionally Destructive Marriage, Part 2"
+      }
+    ]
+  },
+  {
     "course_id": "d5717a1e-bbed-42ba-b1f6-7ebebdfe963e",
     "course_title": "Caring for People Gods Way",
     "quizzes": [
@@ -2117,7 +2820,7 @@
         "quiz_title": "BCOU 305: Hope-focused Marriage Counseling"
       },
       {
-        "prereq_quiz_id": " ",
+        "prereq_quiz_id": "31bf86fa-aa22-4279-8625-09a314344731",
         "questions": [
           {
             "possible_answers": [
