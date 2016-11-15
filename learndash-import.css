@@ -26,7 +26,7 @@
 .main-action-wrap button:last-child { margin-right: 0; }
 .main-action-wrap button:hover { background: darkorange; }
 
-.json-structure { background: #ddd; padding: 10px; box-sizing: border-box; overflow-x: auto; }
+.json-structure { background: #ddd; padding: 10px; box-sizing: border-box; overflow: auto; max-height: 700px; }
 
 .courses-import-container { display: flex; }
 
