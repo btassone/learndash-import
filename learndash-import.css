@@ -1,11 +1,12 @@
 .learndash-import-wrap { margin-top: 20px; margin-bottom: 30px; }
+
+.title-wrap .heading-title { margin: 0; padding: 0; }
+
 .title-wrap { padding: 10px; box-sizing: border-box; }
 .title-wrap { background: #1e8cbe; color: #fff; }
 .title-wrap.delete-data { margin-bottom: 20px; }
 
-.heading-title { text-transform: uppercase; margin: 0; padding: 0; }
-.title-wrap .heading-title { margin: 0; padding: 0; }
-.heading-title { color: #fff; }
+.heading-title { text-transform: uppercase; margin: 0; padding: 0; color: #fff; }
 
 .heading-wrap { margin-bottom: 20px; }
 
