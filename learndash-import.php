@@ -24,18 +24,32 @@ define('QUIZ_PREREQ_TABLE', $wpdb->prefix . 'wp_pro_quiz_prerequisite');
 define('WP_POSTMETA_TABLE', $wpdb->prefix . 'postmeta');
 define('WP_POSTS_TABLE', $wpdb->prefix . 'posts');
 
+add_filter('upload_mimes', 'learndash_import_add_json_mime', 1, 1);
+
+add_action('admin_enqueue_scripts', 'learndash_import_javascript');
 add_action('admin_menu', 'learndash_import_menu');
+
+function learndash_import_add_json_mime($mime_types) {
+    $mime_types['json'] = 'application/json';
+
+    return $mime_types;
+}
 
 function learndash_import_menu() {
     add_menu_page('LearnDash Import', 'LearnDash Import', 'manage_options', 'learndash-import', 'learndash_import_menu_page');
 }
 
+function learndash_import_javascript() {
+    wp_register_script('learndash-import-main', plugin_dir_url(__FILE__) . "learndash-import.js", array(), '', true);
+
+    wp_enqueue_media();
+    wp_enqueue_script('learndash-import-main');
+}
+
 function learndash_import_menu_page() {
     $run = $_GET['run'];
     $delete = $_GET['delete'];
-    $json_file = file_get_contents(plugin_dir_path(__FILE__) . "json-import.json");
-    $data = json_decode($json_file);
-
+    $import_url = $_POST['import_url'];
     ?>
     <style>
         .learndash-import-wrap { margin-top: 20px; margin-bottom: 30px; }
@@ -105,17 +119,21 @@ function learndash_import_menu_page() {
             .course .information-row div label { border-right: none; padding-right: 0; margin-right: 0; display: block; }
         }
     </style>
+    <form id="hidden-submit-form" method="post">
+        <input id="hidden-url-field" type="hidden" name="import_url" value="" />
+    </form>
     <div class="wrap learndash-import-wrap">
         <div class="main-action-wrap">
-            <button id="run-import">Run Import</button>
+            <button id="run-import">Upload & Import</button>
             <button id="delete-all-data">Delete All LearnDash Data</button>
-            <?php if($run || $delete): ?>
-                <button id="go-back-to-main">Home</button>
-            <?php endif; ?>
+            <button id="go-back-to-main">Home</button>
         </div>
     <?php
 
-    if($run) {
+    if($run && $import_url) {
+
+        $json_file = file_get_contents($import_url);
+        $data = json_decode($json_file);
 
         ?>
         <div class="heading-wrap">
@@ -364,27 +382,6 @@ function learndash_import_menu_page() {
     }
     ?>
     </div>
-    <script>
-        var runImportBtn = document.getElementById("run-import");
-        var runDeleteAllDataBtn = document.getElementById("delete-all-data");
-        var runBackBtn = document.getElementById("go-back-to-main");
-
-        runImportBtn.addEventListener('click', runImport);
-        runDeleteAllDataBtn.addEventListener('click', runDeleteAllData);
-        runBackBtn.addEventListener('click', runBack);
-
-        function runImport(){
-            window.location.href = "/wp-admin/admin.php?page=learndash-import&run=true";
-        }
-
-        function runDeleteAllData() {
-            window.location.href = "/wp-admin/admin.php?page=learndash-import&delete=true";
-        }
-
-        function runBack() {
-            window.location.href = "/wp-admin/admin.php?page=learndash-import";
-        }
-    </script>
     <?php
 }
 
