@@ -1,0 +1,12 @@
+{
+    "name": "root/learndash-import",
+    "authors": [
+        {
+            "name": "KaoticS",
+            "email": "brandontassone@gmail.com"
+        }
+    ],
+    "require": {
+        "raveren/kint": "^1.0"
+    }
+}
