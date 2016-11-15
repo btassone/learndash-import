@@ -110,7 +110,7 @@ function learndash_import_menu_page() {
         }
 
         @media(max-width: 350px) {
-            .course { min-width: auto; }
+            .course { min-width: 0; }
 
             .course .title-row label { display: none; }
 
@@ -166,7 +166,6 @@ function learndash_import_menu_page() {
                                 $quiz_prereq_info[] = $prereq_info;
 
                                 foreach($quiz->questions as $question):
-                                    $question_id = $question->question_id;
                                     $question_text = $question->question_text;
                                     $possible_answers = $question->possible_answers;
 
