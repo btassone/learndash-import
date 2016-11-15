@@ -7,6 +7,7 @@ Version: 0.5.0
 Author: Brandon Tassone
 Author URI: https://www.corduroybeach.com/
 */
+
 require_once("vendor/autoload.php");
 
 global $wpdb;
@@ -14,6 +15,7 @@ global $wpdb;
 // TODO: Debugging tool, remove Kint for 1.0.0
 \Kint::$maxLevels = 0;
 
+// Constants
 define('COURSES_POST_TYPE', 'sfwd-courses');
 define('QUIZ_POST_TYPE', 'sfwd-quiz');
 
@@ -24,18 +26,22 @@ define('QUIZ_PREREQ_TABLE', $wpdb->prefix . 'wp_pro_quiz_prerequisite');
 define('WP_POSTMETA_TABLE', $wpdb->prefix . 'postmeta');
 define('WP_POSTS_TABLE', $wpdb->prefix . 'posts');
 
+// Register Filters
 add_filter('upload_mimes', 'learndash_import_add_json_mime', 1, 1);
 
+// Register Actions
+add_action('admin_menu', 'learndash_import_menu');
 add_action('admin_enqueue_scripts', 'learndash_import_styles');
 add_action('admin_enqueue_scripts', 'learndash_import_javascript');
-add_action('admin_menu', 'learndash_import_menu');
 
+// Filter Functions
 function learndash_import_add_json_mime($mime_types) {
     $mime_types['json'] = 'application/json';
 
     return $mime_types;
 }
 
+// Action Functions
 function learndash_import_menu() {
     add_menu_page('LearnDash Import', 'LearnDash Import', 'manage_options', 'learndash-import', 'learndash_import_menu_page');
 }
@@ -53,6 +59,7 @@ function learndash_import_javascript() {
     wp_enqueue_script('learndash-import-main-script');
 }
 
+// Program Functions
 function learndash_import_menu_page() {
     $run = $_GET['run'];
     $delete = $_GET['delete'];
@@ -261,7 +268,7 @@ function learndash_import_delete_all_data() {
         if(in_array($table, $wp_tables)) {
             $query = array(
                 "posts_per_page"        => -1,
-                "post_type"             => array('sfwd-quiz', 'sfwd-courses')
+                "post_type"             => array(QUIZ_POST_TYPE, COURSES_POST_TYPE)
             );
             $posts = get_posts($query);
 
