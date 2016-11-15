@@ -199,6 +199,65 @@ function learndash_import_menu_page() {
     <?php
 }
 
+function learndash_import_create_course(string $course_id, string $course_title): int {
+
+    // Create the course
+    $wp_course_id = wp_insert_post(array(
+        "post_title"    => $course_title,
+        "post_type"     => COURSES_POST_TYPE,
+        "post_status"   => "publish"
+    ));
+
+    // Add the associated import id from the json for later reference
+    add_post_meta($wp_course_id, "imported_course_id", $course_id, true);
+
+    return $wp_course_id;
+}
+
+function learndash_import_create_quiz(string $quiz_id, string $quiz_title, int $course_id, string $prereq_quiz_id) {
+    global $wpdb;
+
+    $quiz_master_inserted_ids = array();
+
+    // Create the quiz
+    $wp_quiz_id = wp_insert_post(array(
+        "post_title"     => $quiz_title,
+        "post_type"     => QUIZ_POST_TYPE,
+        "post_status"   => "publish"
+    ));
+
+    // Add the associated import id from the json for later reference
+    add_post_meta($wp_quiz_id, "imported_quiz_id", $quiz_id, true);
+    $quiz_insert_arr = array(
+        "name"      => $quiz_title,
+        "text"      => ""
+    );
+
+    $wpdb->insert(QUIZ_MASTER_TABLE, $quiz_insert_arr);
+    $quiz_id_master = $wpdb->insert_id;
+
+    add_post_meta($wp_quiz_id, "course_id", $course_id, true);
+    add_post_meta($wp_quiz_id, "lesson_id", 0, true);
+    add_post_meta($wp_quiz_id, "quiz_pro_id", $quiz_id_master, true);
+    add_post_meta($wp_quiz_id, "quiz_pro_id_$quiz_id_master", $quiz_id_master, true);
+    add_post_meta($wp_quiz_id, "_sfwd-quiz", array(
+        "sfwd-quiz_course"              => $course_id,
+        "sfwd-quiz_quiz_pro"            => $quiz_id_master,
+        "sfwd-quiz_repeats"             => 0,
+        "sfwd-quiz_threshold"           => 0.7,
+        "sfwd-quiz_passingpercentage"   => 70,
+        "sfwd-quiz_lesson"              => 0,
+        "sfwd-quiz_certificate"         => 0
+    ), true);
+
+    return array(
+        "wp_quiz_id"        => $wp_quiz_id,
+        "quiz_id_master"    => $quiz_id_master,
+        "quiz_uid"          => $quiz_id,
+        "prereq_quiz_uid"   => $prereq_quiz_id
+    );
+}
+
 function learndash_import_create_question($quiz_master_id, $question_text, $possible_answers){
     global $wpdb;
 
@@ -239,19 +298,33 @@ function learndash_import_create_question($quiz_master_id, $question_text, $poss
     ));
 }
 
-function learndash_import_create_course(string $course_id, string $course_title): int {
+function learndash_import_set_prerequisites($quiz_prereq_info) {
+    global $wpdb;
 
-    // Create the course
-    $wp_course_id = wp_insert_post(array(
-        "post_title"    => $course_title,
-        "post_type"     => COURSES_POST_TYPE,
-        "post_status"   => "publish"
-    ));
+    foreach($quiz_prereq_info as $prereq_info) {
+        if($prereq_info["prereq_quiz_uid"] != 'NULL') {
+            $wpdb->query($wpdb->prepare("UPDATE " . QUIZ_MASTER_TABLE . " SET prerequisite=%d WHERE id=%d", array(1, intval($prereq_info["quiz_id_master"]))));
+            $prereq_master_id = learndash_import_find_prereq_quiz_master_id($prereq_info["prereq_quiz_uid"]);
 
-    // Add the associated import id from the json for later reference
-    add_post_meta($wp_course_id, "imported_course_id", $course_id, true);
+            $wpdb->insert(QUIZ_PREREQ_TABLE, array(
+                "prerequisite_quiz_id"       => intval($prereq_info["quiz_id_master"]),
+                "quiz_id"                   => $prereq_master_id
+            ));
+        }
+    }
+}
 
-    return $wp_course_id;
+function learndash_import_find_prereq_quiz_master_id($prereq_quiz_uid){
+    global $wpdb;
+
+    $query = "SELECT meta_value FROM wp_postmeta WHERE post_id IN (
+                SELECT post_id FROM wp_postmeta WHERE meta_value = %s
+              ) AND meta_key = 'quiz_pro_id'";
+
+    $master_id = $wpdb->get_results($wpdb->prepare($query, array($prereq_quiz_uid)));
+    $master_id = $master_id[0]->meta_value;
+
+    return $master_id;
 }
 
 function learndash_import_delete_all_data() {
@@ -292,77 +365,4 @@ function learndash_import_delete_all_data() {
     echo "</pre>";
 
     return true;
-}
-
-function learndash_import_set_prerequisites($quiz_prereq_info) {
-    global $wpdb;
-
-    foreach($quiz_prereq_info as $prereq_info) {
-        if($prereq_info["prereq_quiz_uid"] != 'NULL') {
-            $wpdb->query($wpdb->prepare("UPDATE " . QUIZ_MASTER_TABLE . " SET prerequisite=%d WHERE id=%d", array(1, intval($prereq_info["quiz_id_master"]))));
-            $prereq_master_id = learndash_import_find_prereq_quiz_master_id($prereq_info["prereq_quiz_uid"]);
-
-            $wpdb->insert(QUIZ_PREREQ_TABLE, array(
-               "prerequisite_quiz_id"       => intval($prereq_info["quiz_id_master"]),
-                "quiz_id"                   => $prereq_master_id
-            ));
-        }
-    }
-}
-
-function learndash_import_find_prereq_quiz_master_id($prereq_quiz_uid){
-    global $wpdb;
-
-    $master_id = $wpdb->get_results(
-        $wpdb->prepare("SELECT meta_value FROM wp_postmeta WHERE post_id IN (
-                            SELECT post_id FROM wp_postmeta WHERE meta_value = %s
-                         ) AND meta_key = 'quiz_pro_id'", array($prereq_quiz_uid))
-    );
-    $master_id = $master_id[0]->meta_value;
-
-    return $master_id;
-}
-
-function learndash_import_create_quiz(string $quiz_id, string $quiz_title, int $course_id, string $prereq_quiz_id) {
-    global $wpdb;
-
-    $quiz_master_inserted_ids = array();
-
-    // Create the quiz
-    $wp_quiz_id = wp_insert_post(array(
-       "post_title"     => $quiz_title,
-        "post_type"     => QUIZ_POST_TYPE,
-        "post_status"   => "publish"
-    ));
-
-    // Add the associated import id from the json for later reference
-    add_post_meta($wp_quiz_id, "imported_quiz_id", $quiz_id, true);
-    $quiz_insert_arr = array(
-        "name"      => $quiz_title,
-        "text"      => ""
-    );
-
-    $wpdb->insert(QUIZ_MASTER_TABLE, $quiz_insert_arr);
-    $quiz_id_master = $wpdb->insert_id;
-
-    add_post_meta($wp_quiz_id, "course_id", $course_id, true);
-    add_post_meta($wp_quiz_id, "lesson_id", 0, true);
-    add_post_meta($wp_quiz_id, "quiz_pro_id", $quiz_id_master, true);
-    add_post_meta($wp_quiz_id, "quiz_pro_id_$quiz_id_master", $quiz_id_master, true);
-    add_post_meta($wp_quiz_id, "_sfwd-quiz", array(
-        "sfwd-quiz_course"              => $course_id,
-        "sfwd-quiz_quiz_pro"            => $quiz_id_master,
-        "sfwd-quiz_repeats"             => 0,
-        "sfwd-quiz_threshold"           => 0.7,
-        "sfwd-quiz_passingpercentage"   => 70,
-        "sfwd-quiz_lesson"              => 0,
-        "sfwd-quiz_certificate"         => 0
-    ), true);
-
-    return array(
-        "wp_quiz_id"        => $wp_quiz_id,
-        "quiz_id_master"    => $quiz_id_master,
-        "quiz_uid"          => $quiz_id,
-        "prereq_quiz_uid"   => $prereq_quiz_id
-    );
 }
