@@ -15,10 +15,11 @@ global $wpdb;
 // TODO: Debugging tool, remove Kint for 1.0.0
 \Kint::$maxLevels = 0;
 
-// Constants
+// Constants - Post Types
 define('COURSES_POST_TYPE', 'sfwd-courses');
 define('QUIZ_POST_TYPE', 'sfwd-quiz');
 
+// Constants - Database Table Names
 define('QUIZ_MASTER_TABLE', $wpdb->prefix . 'wp_pro_quiz_master');
 define('QUIZ_QUESTION_TABLE', $wpdb->prefix . 'wp_pro_quiz_question');
 define('QUIZ_PREREQ_TABLE', $wpdb->prefix . 'wp_pro_quiz_prerequisite');
@@ -59,7 +60,7 @@ function learndash_import_javascript() {
     wp_enqueue_script('learndash-import-main-script');
 }
 
-// Program Functions
+// Admin Menu Functions
 function learndash_import_menu_page() {
     $run = $_GET['run'];
     $delete = $_GET['delete'];
@@ -78,18 +79,18 @@ function learndash_import_menu_page() {
         </div>
         <?php
 
-            if($run && $import_url) {
+        if($run && $import_url) {
 
-                $json_file = file_get_contents($import_url);
-                $data = json_decode($json_file);
+            $json_file = file_get_contents($import_url);
+            $data = json_decode($json_file);
 
-                ?>
-                <div class="heading-wrap">
-                    <div class="title-wrap">
-                        <h1 class="heading-title">Importing Data</h1>
-                    </div>
+            ?>
+            <div class="heading-wrap">
+                <div class="title-wrap">
+                    <h1 class="heading-title">Importing Data</h1>
                 </div>
-                <div class="courses-import-container">
+            </div>
+            <div class="courses-import-container">
                 <?php
 
                 foreach($data as $course):
@@ -104,31 +105,31 @@ function learndash_import_menu_page() {
                     ?>
                     <div class="course">
                         <?php
-                            $quiz_prereq_info = array();
+                        $quiz_prereq_info = array();
 
-                            foreach($course->quizzes as $quiz):
-                                $quiz_id = $quiz->quiz_id;
-                                $quiz_title = $quiz->quiz_title;
-                                $prereq_quiz_id = $quiz->prereq_quiz_id ?: 'NULL';
+                        foreach($course->quizzes as $quiz):
+                            $quiz_id = $quiz->quiz_id;
+                            $quiz_title = $quiz->quiz_title;
+                            $prereq_quiz_id = $quiz->prereq_quiz_id ?: 'NULL';
 
-                                $prereq_info = learndash_import_create_quiz($quiz_id, $quiz_title, $wp_course_id, $prereq_quiz_id);
-                                $quiz_prereq_info[] = $prereq_info;
+                            $prereq_info = learndash_import_create_quiz($quiz_id, $quiz_title, $wp_course_id, $prereq_quiz_id);
+                            $quiz_prereq_info[] = $prereq_info;
 
-                                foreach($quiz->questions as $question):
-                                    $question_text = $question->question_text;
-                                    $possible_answers = $question->possible_answers;
+                            foreach($quiz->questions as $question):
+                                $question_text = $question->question_text;
+                                $possible_answers = $question->possible_answers;
 
-                                    learndash_import_create_question($prereq_info["quiz_id_master"], $question_text, $possible_answers);
+                                learndash_import_create_question($prereq_info["quiz_id_master"], $question_text, $possible_answers);
 
-                                    $answer_count += count($possible_answers);
-                                    $question_count++;
-                                endforeach;
-
-                                $quiz_count++;
+                                $answer_count += count($possible_answers);
+                                $question_count++;
                             endforeach;
 
-                            // Update the recently imported prerequisites
-                            learndash_import_set_prerequisites($quiz_prereq_info);
+                            $quiz_count++;
+                        endforeach;
+
+                        // Update the recently imported prerequisites
+                        learndash_import_set_prerequisites($quiz_prereq_info);
                         ?>
                         <div class="title-row">
                             <label>Course: </label>
@@ -152,53 +153,54 @@ function learndash_import_menu_page() {
                     <?php
                 endforeach;
                 ?>
-                </div>
-                <?php
-            }
+            </div>
+            <?php
+        }
 
-            if($delete) {
-                ?>
-                <div class="title-wrap delete-data">
-                    <h1 class="heading-title">Removing All LearnDash Data</h1>
-                </div>
-                <?php
-                $passed = learndash_import_delete_all_data();
-                $passed_text = $passed ? "Deleted everything successfully" : "Failed deleting a table somewhere.";
-                $passed_class = $passed ? "success" : "failure";
-                ?>
-                <div class="deleted-tables-status <?php echo $passed_class; ?>">
-                    <?php echo $passed_text; ?>
-                </div>
-                <?php
-            }
+        if($delete) {
+            ?>
+            <div class="title-wrap delete-data">
+                <h1 class="heading-title">Removing All LearnDash Data</h1>
+            </div>
+            <?php
+            $passed = learndash_import_delete_all_data();
+            $passed_text = $passed ? "Deleted everything successfully" : "Failed deleting a table somewhere.";
+            $passed_class = $passed ? "success" : "failure";
+            ?>
+            <div class="deleted-tables-status <?php echo $passed_class; ?>">
+                <?php echo $passed_text; ?>
+            </div>
+            <?php
+        }
 
-            if(!$run && !$delete) {
-                ?>
-                <div class="title-wrap description">
-                    <h1 class="heading-title">LearnDash Import</h1>
-                </div>
-                <div style="margin-bottom: 30px;">
-                    <p>
-                        LearnDash Import is a JSON importer. Currently there are 2 supported actions Run Import which will run
-                        the JSON import and Delete All LearnDash data. Best used when its a brand new site and you messed up
-                        the import somehow and need to start again
-                    </p>
-                    <p>
-                        Listed below is the current JSON template. More options will be added in the future
-                    </p>
-                </div>
-                <div>
-                    <h3>Example JSON Import Structure</h3>
-                    <pre class="json-structure"><?php echo $mock_json_structure; ?></pre>
-                </div>
-                <?php
-            }
+        if(!$run && !$delete) {
+            ?>
+            <div class="title-wrap description">
+                <h1 class="heading-title">LearnDash Import</h1>
+            </div>
+            <div style="margin-bottom: 30px;">
+                <p>
+                    LearnDash Import is a JSON importer. Currently there are 2 supported actions Run Import which will run
+                    the JSON import and Delete All LearnDash data. Best used when its a brand new site and you messed up
+                    the import somehow and need to start again
+                </p>
+                <p>
+                    Listed below is the current JSON template. More options will be added in the future
+                </p>
+            </div>
+            <div>
+                <h3>Example JSON Import Structure</h3>
+                <pre class="json-structure"><?php echo $mock_json_structure; ?></pre>
+            </div>
+            <?php
+        }
 
         ?>
     </div>
     <?php
 }
 
+// Program Functions
 function learndash_import_create_course(string $course_id, string $course_title): int {
 
     // Create the course
