@@ -38,6 +38,7 @@ function learndash_import_menu_page() {
 
     ?>
     <style>
+        .learndash-import-wrap { margin-top: 20px; margin-bottom: 30px; }
         .title-wrap { padding: 10px; box-sizing: border-box; }
         .title-wrap { background: #1e8cbe; color: #fff; }
         .title-wrap.delete-data { margin-bottom: 20px; }
@@ -52,7 +53,7 @@ function learndash_import_menu_page() {
 
         .question-info-item label { font-weight: 700; text-transform: uppercase; width: 125px; }
 
-        .rows-removed-container { background: #ddd; padding: 10px; box-sizing: border-box; margin-bottom: 20px; }
+        .rows-removed-container { background: #ddd; padding: 10px; box-sizing: border-box; margin-bottom: 20px; overflow-x: auto; }
 
         .deleted-tables-status { padding: 10px; box-sizing: border-box; color: #fff; font-weight: 700; }
         .deleted-tables-status.success { background: limegreen; }
@@ -64,11 +65,11 @@ function learndash_import_menu_page() {
         .main-action-wrap button:last-child { margin-right: 0; }
         .main-action-wrap button:hover { background: darkorange; }
 
-        .json-structure { background: #ddd; padding: 10px; box-sizing: border-box; }
+        .json-structure { background: #ddd; padding: 10px; box-sizing: border-box; overflow-x: auto; }
 
         .courses-import-container { display: flex; }
 
-        .course { background: orange; color: #fff; padding: 10px; box-sizing: border-box; margin-bottom: 20px; display: inline-block; margin-right: 20px; }
+        .course { background: orange; color: #fff; padding: 10px; box-sizing: border-box; margin-bottom: 20px; display: inline-block; margin-right: 20px; min-width: 350px; }
 
         .course .title-row { text-transform: uppercase; font-size: 1.25em; display: flex; align-items: center; margin-bottom: 10px; }
         .course .title-row label { margin-right: 6px; font-weight: 500; }
@@ -81,20 +82,30 @@ function learndash_import_menu_page() {
         #go-back-to-main { float: right; }
 
         @media(max-width: 960px) {
-            .main-action-wrap {
-                width: calc(100% - 36px);
-                left: 36px;
-            }
+            .main-action-wrap { width: calc(100% - 36px); left: 36px; }
+            .courses-import-container { display: block; }
+            .course { width: 100%; display: block; }
         }
 
         @media(max-width: 782px) {
-            .main-action-wrap {
-                width: 100%;
-                left: 0;
-            }
+            .learndash-import-wrap { margin-top: 10px; margin-bottom: 60px; }
+
+            .main-action-wrap { width: 100%; left: 0; }
+
+            .main-action-wrap button { width: 100%; float: none; margin-bottom: 10px; }
+            .main-action-wrap button:last-child { margin-bottom: 0; }
+        }
+
+        @media(max-width: 350px) {
+            .course { min-width: auto; }
+
+            .course .title-row label { display: none; }
+
+            .course .information-row div { display: block; }
+            .course .information-row div label { border-right: none; padding-right: 0; margin-right: 0; display: block; }
         }
     </style>
-    <div class="wrap" style="margin-top: 20px; margin-bottom: 30px;">
+    <div class="wrap learndash-import-wrap">
         <div class="main-action-wrap">
             <button id="run-import">Run Import</button>
             <button id="delete-all-data">Delete All LearnDash Data</button>
