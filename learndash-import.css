@@ -1,4 +1,4 @@
-.learndash-import-wrap { margin-top: 20px; margin-bottom: 30px; }
+.learndash-import-wrap { margin-top: 20px; margin-bottom: 25px; }
 
 .title-wrap .heading-title { margin: 0; padding: 0; }
 
@@ -26,7 +26,7 @@
 .main-action-wrap button:last-child { margin-right: 0; }
 .main-action-wrap button:hover { background: darkorange; }
 
-.json-structure { background: #ddd; padding: 10px; box-sizing: border-box; overflow: auto; max-height: 700px; }
+.json-structure { background: #ddd; padding: 10px; box-sizing: border-box; overflow: auto; max-height: 640px; }
 
 .courses-import-container { display: flex; }
 
@@ -49,7 +49,7 @@
 }
 
 @media(max-width: 782px) {
-    .learndash-import-wrap { margin-top: 10px; margin-bottom: 60px; }
+    .learndash-import-wrap { margin-top: 10px; margin-bottom: 56px; }
 
     .main-action-wrap { width: 100%; left: 0; }
 

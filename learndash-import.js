@@ -1,6 +1,6 @@
 var runImportBtn = document.getElementById("run-import");
 var runDeleteAllDataBtn = document.getElementById("delete-all-data");
-var runBackBtn = document.getElementById("go-back-to-main");
+var runHomeBtn = document.getElementById("go-back-to-main");
 
 var file_frame;
 
@@ -10,15 +10,15 @@ if(runImportBtn)
 if(runDeleteAllDataBtn)
     runDeleteAllDataBtn.addEventListener('click', runDeleteAllData);
 
-if(runBackBtn)
-    runBackBtn.addEventListener('click', runBack);
+if(runHomeBtn)
+    runHomeBtn.addEventListener('click', runHome);
 
 function runDeleteAllData() {
     if(confirm("Are you sure you want to delete all the LearnDash Course / Quiz / Question data?"))
         window.location.href = "/wp-admin/admin.php?page=learndash-import&delete=true";
 }
 
-function runBack() {
+function runHome() {
     window.location.href = "/wp-admin/admin.php?page=learndash-import";
 }
 
