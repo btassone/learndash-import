@@ -26,6 +26,7 @@ define('WP_POSTS_TABLE', $wpdb->prefix . 'posts');
 
 add_filter('upload_mimes', 'learndash_import_add_json_mime', 1, 1);
 
+add_action('admin_enqueue_scripts', 'learndash_import_styles');
 add_action('admin_enqueue_scripts', 'learndash_import_javascript');
 add_action('admin_menu', 'learndash_import_menu');
 
@@ -39,11 +40,17 @@ function learndash_import_menu() {
     add_menu_page('LearnDash Import', 'LearnDash Import', 'manage_options', 'learndash-import', 'learndash_import_menu_page');
 }
 
+function learndash_import_styles() {
+    wp_register_style('learndash-import-main-style', plugin_dir_url(__FILE__) . "learndash-import.css");
+
+    wp_enqueue_style('learndash-import-main-style');
+}
+
 function learndash_import_javascript() {
-    wp_register_script('learndash-import-main', plugin_dir_url(__FILE__) . "learndash-import.js", array(), '', true);
+    wp_register_script('learndash-import-main-script', plugin_dir_url(__FILE__) . "learndash-import.js", array(), '', true);
 
     wp_enqueue_media();
-    wp_enqueue_script('learndash-import-main');
+    wp_enqueue_script('learndash-import-main-script');
 }
 
 function learndash_import_menu_page() {
@@ -53,74 +60,6 @@ function learndash_import_menu_page() {
 
     $mock_json_structure = file_get_contents(plugin_dir_url(__FILE__) . "mock-json-structure.json");
     ?>
-    <style>
-        .learndash-import-wrap { margin-top: 20px; margin-bottom: 30px; }
-        .title-wrap { padding: 10px; box-sizing: border-box; }
-        .title-wrap { background: #1e8cbe; color: #fff; }
-        .title-wrap.delete-data { margin-bottom: 20px; }
-
-        .heading-title { text-transform: uppercase; margin: 0; padding: 0; }
-        .title-wrap .heading-title { margin: 0; padding: 0; }
-        .heading-title { color: #fff; }
-
-        .heading-wrap { margin-bottom: 20px; }
-
-        .quiz-info-item label { width: 125px; text-transform: uppercase; font-weight: 700; }
-
-        .question-info-item label { font-weight: 700; text-transform: uppercase; width: 125px; }
-
-        .rows-removed-container { background: #ddd; padding: 10px; box-sizing: border-box; margin-bottom: 20px; overflow-x: auto; }
-
-        .deleted-tables-status { padding: 10px; box-sizing: border-box; color: #fff; font-weight: 700; }
-        .deleted-tables-status.success { background: limegreen; }
-        .deleted-tables-status.failure { background: orangered; }
-
-        .main-action-wrap { background: #1e8cbe; padding: 20px; box-sizing: border-box; display: block; width: calc(100% - 160px); position: fixed; bottom: 0; left: 160px; z-index: 9999; }
-
-        .main-action-wrap button { padding: 6px; background: orange; border: none; color: #fff; margin-right: 10px; cursor: pointer; transition: all 0.3s ease; }
-        .main-action-wrap button:last-child { margin-right: 0; }
-        .main-action-wrap button:hover { background: darkorange; }
-
-        .json-structure { background: #ddd; padding: 10px; box-sizing: border-box; overflow-x: auto; }
-
-        .courses-import-container { display: flex; }
-
-        .course { background: orange; color: #fff; padding: 10px; box-sizing: border-box; margin-bottom: 20px; display: inline-block; margin-right: 20px; min-width: 350px; }
-
-        .course .title-row { text-transform: uppercase; font-size: 1.25em; display: flex; align-items: center; margin-bottom: 10px; }
-        .course .title-row label { margin-right: 6px; font-weight: 500; }
-
-        .course .information-row { background: #f1f1f1; color: #222; }
-        .course .information-row div { display: flex; align-items: center; padding: 10px; }
-        .course .information-row div:nth-child(even) { background: #fff; }
-        .course .information-row div label { width: 250px; font-weight: 500; text-transform: uppercase; border-right: 1px solid #222; padding-right: 10px; margin-right: 10px; }
-
-        #go-back-to-main { float: right; }
-
-        @media(max-width: 960px) {
-            .main-action-wrap { width: calc(100% - 36px); left: 36px; }
-            .courses-import-container { display: block; }
-            .course { width: 100%; display: block; }
-        }
-
-        @media(max-width: 782px) {
-            .learndash-import-wrap { margin-top: 10px; margin-bottom: 60px; }
-
-            .main-action-wrap { width: 100%; left: 0; }
-
-            .main-action-wrap button { width: 100%; float: none; margin-bottom: 10px; }
-            .main-action-wrap button:last-child { margin-bottom: 0; }
-        }
-
-        @media(max-width: 350px) {
-            .course { min-width: 0; }
-
-            .course .title-row label { display: none; }
-
-            .course .information-row div { display: block; }
-            .course .information-row div label { border-right: none; padding-right: 0; margin-right: 0; display: block; }
-        }
-    </style>
     <form id="hidden-submit-form" method="post">
         <input id="hidden-url-field" type="hidden" name="import_url" value="" />
     </form>
