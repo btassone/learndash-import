@@ -109,7 +109,9 @@ function learndash_import_menu_page() {
         <div class="main-action-wrap">
             <button id="run-import">Run Import</button>
             <button id="delete-all-data">Delete All LearnDash Data</button>
-            <button id="go-back-to-main">Home</button>
+            <?php if($run || $delete): ?>
+                <button id="go-back-to-main">Home</button>
+            <?php endif; ?>
         </div>
     <?php
 
