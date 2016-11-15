@@ -14,7 +14,7 @@ if(runBackBtn)
     runBackBtn.addEventListener('click', runBack);
 
 function runDeleteAllData() {
-    if(confirm("Are you sure you want to delete all the LearnDash Course / Quiz / Answer data?"))
+    if(confirm("Are you sure you want to delete all the LearnDash Course / Quiz / Question data?"))
         window.location.href = "/wp-admin/admin.php?page=learndash-import&delete=true";
 }
 

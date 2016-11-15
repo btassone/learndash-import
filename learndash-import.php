@@ -1,12 +1,11 @@
 <?php
 /*
-Plugin Name: Learndash JSON Import
-Plugin URI: http://my-awesomeness-emporium.com
-Description: a plugin to create awesomeness and spread joy
-Version: 1.2
-Author: Mr. Awesome
-Author URI: http://mrtotallyawesome.com
-License: GPL2
+Plugin Name: LearnDash JSON Import
+Plugin URI: https://www.corduroybeach.com/
+Description: A plugin for importing Courses / Quizzes / Questions and other things through the use of JSON
+Version: 0.5.0
+Author: Brandon Tassone
+Author URI: https://www.corduroybeach.com/
 */
 require_once("vendor/autoload.php");
 
