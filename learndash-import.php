@@ -172,14 +172,7 @@ function learndash_import_menu_page() {
 
                                     learndash_import_create_question($prereq_info["quiz_id_master"], $question_text, $possible_answers);
 
-                                    foreach($possible_answers as $possible_answer):
-                                        $answer_id = $possible_answer->answer_id;
-                                        $answer_text = $possible_answer->answer_text;
-                                        $correct = $possible_answer->correct;
-
-                                        $answer_count++;
-                                    endforeach;
-
+                                    $answer_count += count($possible_answers);
                                     $question_count++;
                                 endforeach;
 
