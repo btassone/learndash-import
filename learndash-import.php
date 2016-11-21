@@ -103,7 +103,7 @@ function learndash_import_menu_page() {
                     $question_count = 0;
                     $answer_count = 0;
                     ?>
-                    <div class="course">
+                    <div class="course-item">
                         <?php
                         $quiz_prereq_info = array();
 

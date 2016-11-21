@@ -30,22 +30,22 @@
 
 .courses-import-container { display: flex; }
 
-.course { background: orange; color: #fff; padding: 10px; box-sizing: border-box; margin-bottom: 20px; display: inline-block; margin-right: 20px; min-width: 350px; }
+.course-item { background: orange; color: #fff; padding: 10px; box-sizing: border-box; margin-bottom: 20px; display: inline-block; margin-right: 20px; min-width: 350px; }
 
-.course .title-row { text-transform: uppercase; font-size: 1.25em; display: flex; align-items: center; margin-bottom: 10px; }
-.course .title-row label { margin-right: 6px; font-weight: 500; }
+.course-item .title-row { text-transform: uppercase; font-size: 1.25em; display: flex; align-items: center; margin-bottom: 10px; }
+.course-item .title-row label { margin-right: 6px; font-weight: 500; }
 
-.course .information-row { background: #f1f1f1; color: #222; }
-.course .information-row div { display: flex; align-items: center; padding: 10px; }
-.course .information-row div:nth-child(even) { background: #fff; }
-.course .information-row div label { width: 250px; font-weight: 500; text-transform: uppercase; border-right: 1px solid #222; padding-right: 10px; margin-right: 10px; }
+.course-item .information-row { background: #f1f1f1; color: #222; }
+.course-item .information-row div { display: flex; align-items: center; padding: 10px; }
+.course-item .information-row div:nth-child(even) { background: #fff; }
+.course-item .information-row div label { width: 250px; font-weight: 500; text-transform: uppercase; border-right: 1px solid #222; padding-right: 10px; margin-right: 10px; }
 
 #go-back-to-main { float: right; }
 
 @media(max-width: 960px) {
     .main-action-wrap { width: calc(100% - 36px); left: 36px; }
     .courses-import-container { display: block; }
-    .course { width: 100%; display: block; }
+    .course-item { width: 100%; display: block; }
 }
 
 @media(max-width: 782px) {
@@ -58,10 +58,10 @@
 }
 
 @media(max-width: 350px) {
-    .course { min-width: 0; }
+    .course-item { min-width: 0; }
 
-    .course .title-row label { display: none; }
+    .course-item .title-row label { display: none; }
 
-    .course .information-row div { display: block; }
-    .course .information-row div label { border-right: none; padding-right: 0; margin-right: 0; display: block; }
+    .course-item .information-row div { display: block; }
+    .course-item .information-row div label { border-right: none; padding-right: 0; margin-right: 0; display: block; }
 }
