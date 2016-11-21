@@ -62,9 +62,9 @@ function learndash_import_javascript() {
 
 // Admin Menu Functions
 function learndash_import_menu_page() {
-    $run = $_GET['run'];
-    $delete = $_GET['delete'];
-    $import_url = $_POST['import_url'];
+    $run = isset($_GET['run']) ? $_GET['run'] : '';
+    $delete = isset($_GET['delete']) ? $_GET['delete'] : '';
+    $import_url = isset($_POST['import_url']) ? $_POST['import_url'] : '';
 
     $mock_json_structure = file_get_contents(plugin_dir_url(__FILE__) . "mock-json-structure.json");
     ?>
@@ -201,7 +201,7 @@ function learndash_import_menu_page() {
 }
 
 // Program Functions
-function learndash_import_create_course(string $course_id, string $course_title): int {
+function learndash_import_create_course($course_id, $course_title) {
 
     // Create the course
     $wp_course_id = wp_insert_post(array(
@@ -216,7 +216,7 @@ function learndash_import_create_course(string $course_id, string $course_title)
     return $wp_course_id;
 }
 
-function learndash_import_create_quiz(string $quiz_id, string $quiz_title, int $course_id, string $prereq_quiz_id) {
+function learndash_import_create_quiz($quiz_id, $quiz_title, $course_id, $prereq_quiz_id) {
     global $wpdb;
 
     $quiz_master_inserted_ids = array();
