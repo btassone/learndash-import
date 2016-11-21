@@ -263,7 +263,8 @@ function learndash_import_create_quiz($quiz_id, $quiz_title, $course_id, $prereq
 function learndash_import_create_question($quiz_master_id, $question_text, $possible_answers){
     global $wpdb;
 
-    $sort_next = ($wpdb->get_results($wpdb->prepare("SELECT count(quiz_id) AS sort_next FROM wp_wp_pro_quiz_question WHERE quiz_id = %d", array($quiz_master_id))))[0]->sort_next;
+    $sort_next = $wpdb->get_results($wpdb->prepare("SELECT count(quiz_id) AS sort_next FROM wp_wp_pro_quiz_question WHERE quiz_id = %d", array($quiz_master_id)));
+    $sort_next = $sort_next[0]->sort_next;
     $answer_types = array();
 
     foreach($possible_answers as $possible_answer) {
