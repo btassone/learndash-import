@@ -27,6 +27,9 @@ define('QUIZ_PREREQ_TABLE', $wpdb->prefix . 'wp_pro_quiz_prerequisite');
 define('WP_POSTMETA_TABLE', $wpdb->prefix . 'postmeta');
 define('WP_POSTS_TABLE', $wpdb->prefix . 'posts');
 
+// Allow JSON uploads
+define('ALLOW_UNFILTERED_UPLOADS', true);
+
 // Register Filters
 add_filter('upload_mimes', 'learndash_import_add_json_mime', 1, 1);
 
@@ -103,7 +106,7 @@ function learndash_import_menu_page() {
                     $question_count = 0;
                     $answer_count = 0;
                     ?>
-                    <div class="course-item">
+                    <div class="course">
                         <?php
                         $quiz_prereq_info = array();
 
@@ -111,8 +114,9 @@ function learndash_import_menu_page() {
                             $quiz_id = $quiz->quiz_id;
                             $quiz_title = $quiz->quiz_title;
                             $prereq_quiz_id = $quiz->prereq_quiz_id ?: 'NULL';
+                            $menu_order = $quiz_count + 1; // Needs to start at non 0
 
-                            $prereq_info = learndash_import_create_quiz($quiz_id, $quiz_title, $wp_course_id, $prereq_quiz_id);
+                            $prereq_info = learndash_import_create_quiz($quiz_id, $quiz_title, $wp_course_id, $prereq_quiz_id, $menu_order);
                             $quiz_prereq_info[] = $prereq_info;
 
                             foreach($quiz->questions as $question):
@@ -201,7 +205,7 @@ function learndash_import_menu_page() {
 }
 
 // Program Functions
-function learndash_import_create_course($course_id, $course_title) {
+function learndash_import_create_course($course_uid, $course_title) {
 
     // Create the course
     $wp_course_id = wp_insert_post(array(
@@ -211,21 +215,34 @@ function learndash_import_create_course($course_id, $course_title) {
     ));
 
     // Add the associated import id from the json for later reference
-    add_post_meta($wp_course_id, "imported_course_id", $course_id, true);
+    add_post_meta($wp_course_id, "imported_course_id", $course_uid, true);
+    add_post_meta($wp_course_id, "_sfwd-courses", array(
+        "sfwd-courses_course_materials"         => "",
+        "sfwd-courses_course_price_type"        => "open",
+        "sfwd-courses_custom_button_url"        => "",
+        "sfwd-courses_course_price"             => "",
+        "sfwd-courses_course_access_list"       => "",
+        "sfwd-courses_course_lesson_orderby"    => "menu_order",
+        "sfwd-courses_course_lesson_order"      => "ASC",
+        "sfwd-courses_course_prerequisite"      => 0,
+        "sfwd-courses_expire_access_days"       => "",
+        "sfwd-courses_certificate"              => 0
+    ), true);
 
     return $wp_course_id;
 }
 
-function learndash_import_create_quiz($quiz_id, $quiz_title, $course_id, $prereq_quiz_id) {
+function learndash_import_create_quiz($quiz_id, $quiz_title, $course_id, $prereq_quiz_id, $menu_order) {
     global $wpdb;
 
     $quiz_master_inserted_ids = array();
 
     // Create the quiz
     $wp_quiz_id = wp_insert_post(array(
-        "post_title"     => $quiz_title,
-        "post_type"     => QUIZ_POST_TYPE,
-        "post_status"   => "publish"
+        "post_title"        => $quiz_title,
+        "post_type"         => QUIZ_POST_TYPE,
+        "post_status"       => "publish",
+        "menu_order"        => $menu_order
     ));
 
     // Add the associated import id from the json for later reference
@@ -263,8 +280,10 @@ function learndash_import_create_quiz($quiz_id, $quiz_title, $course_id, $prereq
 function learndash_import_create_question($quiz_master_id, $question_text, $possible_answers){
     global $wpdb;
 
-    $sort_next = $wpdb->get_results($wpdb->prepare("SELECT count(quiz_id) AS sort_next FROM wp_wp_pro_quiz_question WHERE quiz_id = %d", array($quiz_master_id)));
-    $sort_next = $sort_next[0]->sort_next;
+    $wp_prepare = $wpdb->prepare("SELECT count(quiz_id) AS sort_next FROM wp_wp_pro_quiz_question WHERE quiz_id = %d", array($quiz_master_id));
+    $wp_results = $wpdb->get_results($wp_prepare);
+
+    $sort_next = $wp_results[0]->sort_next;
     $answer_types = array();
 
     foreach($possible_answers as $possible_answer) {
