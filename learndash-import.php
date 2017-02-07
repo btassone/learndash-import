@@ -309,7 +309,7 @@ function learndash_import_create_question($quiz_master_id, $question_text, $poss
         "question"                              => $question_text,
         "correct_same_text"                     => 0,
         "tip_enabled"                           => 0,
-        "answer_type"                           => "multiple",
+        "answer_type"                           => "single",
         "show_points_in_box"                    => 0,
         "answer_points_activated"               => 0,
         "answer_data"                           => $answer_types,
